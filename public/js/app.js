@@ -130,7 +130,9 @@ async function openDetail(identifier) {
 
   try {
     // Set the enpoint for retrieving the information.
+    // Search for the character details api
     const response = await fetch(`/api`);
+
 
     if (response.status === 404) {
       if (isModalOpen) characterModal.hide();
