@@ -13,7 +13,7 @@
   <nav class="navbar navbar-expand-lg bg-secondary navbar-dark sticky-top shadow-sm">
     <div class="container">
       <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="#" id="brand-reset">
-        </span> The Galaxy
+        <span>✦</span> The Galaxy Far, Far Away
       </a>
       <form class="d-flex" id="search-form" role="search">
         <div class="input-group">
@@ -67,47 +67,33 @@
         </div>
 
         <div class="modal-body p-4">
-          <div class="row align-items-center">
+          <div class="row g-4">
             <!-- Left Column: Sprite & Types -->
-            <div class="col-md-5 text-center mb-3 mb-md-0">
-              <div class="sprite-wrapper p-3 rounded bg-body-tertiary border mb-3">
-                <img id="modal-img" src="" alt="Character Sprite" class="img-fluid characters-detail-img">
+            <div class="col-md-5 text-center">
+              <div class="character-image-wrapper p-3 rounded mb-3">
+                <img id="modal-img" src="" alt="Star Wars Character" class="img-fluid characters-detail-img">
               </div>
-              <div id="modal-types" class="d-flex justify-content-center gap-2 flex-wrap"></div>
-            </div>
+              <p class="text-secondary mb-1">CHaracter ID</p>
+              <h5 id="modal-id" class="fw-bold"></h5>
 
+              <a id="modal-wiki" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline-info mt-2">Read the Wiki</a>
+            </div>
             <!-- Right Column: Stats, Abilities, Moves, Characteristics, etc. -->
             <div class="col-md-7">
-              <div class="row g-2 text-center mb-3">
-                <div class="col-4">
-                  <div class="p-2 border rounded bg-body-tertiary">
-                    <small class="text-secondary d-block">Age</small>
-                    <span class="fw-bold" id="modal-exp">-</span>
-                  </div>
-                </div>
-                <div class="col-4">
-                  <div class="p-2 border rounded bg-body-tertiary">
-                    <small class="text-secondary d-block">Height</small>
-                    <span class="fw-bold" id="modal-height">-</span>
-                  </div>
-                </div>
-                <div class="col-4">
-                  <div class="p-2 border rounded bg-body-tertiary">
-                    <small class="text-secondary d-block">Weight</small>
-                    <span class="fw-bold" id="modal-weight">-</span>
-                  </div>
-                </div>
-              </div>
-              <!-- Add the details requested in your exercise. -->
-              <div class="mb-3">
-                <h6 class="fw-bold text-secondary mb-1">Features</h6>
-                <div id="modal-abilities" class="d-flex flex-wrap gap-1"></div>
-              </div>
+              <h6 class="selection-heading">Physical information</h6>
+              <dl id="modal-physical" class="detail-list"></dl>
 
-              <div>
-                <h6 class="fw-bold text-secondary mb-1">Characteristics</h6>
-                <div id="modal-moves" class="moves-scroll-box p-2 border rounded bg-body-tertiary d-flex flex-wrap gap-1"></div>
-              </div>
+              <h6 class="selection-heading mt-4">Appearance</h6>
+              <dl id="modal-appearance" class="detail-list"></dl>
+
+              <h6 class="selection-heading mt-4">Affiliations</h6>
+              <div id="modal-affiliations"></div>
+
+              <h6 class="selection-heading mt-4">Relationships</h6>
+              <div id="modal-relationships"></div>
+
+              <h6 class="selection-heading mt-4">Additional information</h6>
+              <dl id="modal-extra" class="detail-list"></dl>
             </div>
           </div>
         </div>
