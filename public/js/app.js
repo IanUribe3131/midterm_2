@@ -56,7 +56,7 @@ async function loadCatalog(searchQuery = '') {
 
   try {
     // Define your search enpoint here.
-    const endpoint = '/api';
+    const endpoint = `/api/character?search=${searchQuery}`;
 
     const response = await fetch(endpoint);
     if (response.status === 404) {
@@ -131,7 +131,7 @@ async function openDetail(identifier) {
   try {
     // Set the enpoint for retrieving the information.
     // Search for the character details api
-    const response = await fetch(`/api`);
+    const response = await fetch(`/api/character/${identifier}`);
 
 
     if (response.status === 404) {
@@ -156,19 +156,27 @@ async function openDetail(identifier) {
   }
 }
 
+
+
 /**
  * Populate modal DOM elements with backend payload
- */
+*/
 function populateModal(character) {
+  const addCharacteristic=(c,name)=>{
+    let badge=document.createElement('span');
+    badge.className = 'badge border border-secondary text-body-secondary text-capitalize';
+    badge.textContent=`${name}: ${c || `no ${name.toLowerCase()} found`}`;
+    modalMoves.appendChild(badge);
+  };
   modalName.textContent = character.name || 'Unknown';
   modalId.textContent = character.id ? `#${String(character.id).padStart(3, '0')}` : '#???';
 
   modalImg.src = character.image || DEFAULT_IMAGE;
   modalImg.onerror = () => { modalImg.onerror = null; modalImg.src = DEFAULT_IMAGE; };
 
-  modalExp.textContent = character.experience ?? '-';
+  modalExp.textContent = character.gender ?? '-';
   modalHeight.textContent = character.height ?? '-';
-  modalWeight.textContent = character.weight ?? '-';
+  modalWeight.textContent = character.mass ?? '-';
 
   // Render Types
   modalTypes.innerHTML = '';
@@ -190,17 +198,31 @@ function populateModal(character) {
 
   // Render Moves
   modalMoves.innerHTML = '';
-  const moves = character.moves || [];
-  if (moves.length === 0) {
-    modalMoves.innerHTML = '<span class="text-secondary small">No moves listed</span>';
-  } else {
-    moves.forEach((move) => {
-      const badge = document.createElement('span');
-      badge.className = 'badge border border-secondary text-body-secondary text-capitalize';
-      badge.textContent = move;
-      modalMoves.appendChild(badge);
-    });
+  if(character.born){
+    addCharacteristic(character.born,'Born');
   }
+  addCharacteristic(character.gender,'Gender');
+  addCharacteristic(character.homeworld,'Homeworld');
+  if(character.affiliations && character.affiliations.length>0)
+    addCharacteristic(character.affiliations,'Affiliations');
+  if(character.formerAffilliations && character.formerAffiliations.length>0)
+    addCharacteristic(character.formerAffiliations,'Former affiliations');
+  
+  if(character.species==='droid'){
+    addCharacteristic(character.manufacturer,'Manufacturer');
+    addCharacteristic(character.model,'Model');
+  }
+  
+  if(character.masters && character.masters.length>0)
+    addCharacteristic(character.masters,'Masters');
+  if(character.apprentices && character.apprentices.length>0)
+    addCharacteristic(character.apprentices,'Apprentices');
+
+  const a=document.createElement('a');
+  a.href=character.wiki;
+  a.textContent='Wiki';
+  a.className = 'badge border border-secondary text-body-secondary text-capitalize';
+  modalMoves.appendChild(a);
 
   // Bind Circular Navigation IDs provided by Backend
   currentPrevId = character.prevId ?? null;
@@ -209,7 +231,6 @@ function populateModal(character) {
   prevBtn.disabled = currentPrevId === null;
   nextBtn.disabled = currentNextId === null;
 }
-
 // Event Listeners: Modal Left/Right Navigation
 prevBtn.addEventListener('click', () => {
   if (currentPrevId !== null) openDetail(currentPrevId);
@@ -271,4 +292,4 @@ function hideError() {
 }
 
 // Initial Boot
-document.addEventListener('DOMContentLoaded', () => loadCatalog());
+document.addEventListener('DOMContentLoaded', () => loadCatalog(searchInput.textContent));

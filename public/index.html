@@ -15,7 +15,7 @@
       <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="#" id="brand-reset">
         </span> The Galaxy
       </a>
-      <form class="d-flex" id="search-form" role="search">
+      <form class="d-flex" id="search-form" role="search" action="/api/character">
         <div class="input-group">
           <input class="form-control" name="search" type="search" id="search-input" placeholder="Search by name or ID..." aria-label="Search">
           <button class="btn btn-dark" type="submit">Search</button>
@@ -81,7 +81,7 @@
               <div class="row g-2 text-center mb-3">
                 <div class="col-4">
                   <div class="p-2 border rounded bg-body-tertiary">
-                    <small class="text-secondary d-block">Age</small>
+                    <small class="text-secondary d-block">Gender</small>
                     <span class="fw-bold" id="modal-exp">-</span>
                   </div>
                 </div>
@@ -100,12 +100,12 @@
               </div>
               <!-- Add the details requested in your exercise. -->
               <div class="mb-3">
-                <h6 class="fw-bold text-secondary mb-1">Features</h6>
+                <!-- <h6 class="fw-bold text-secondary mb-1">Features</h6> -->
                 <div id="modal-abilities" class="d-flex flex-wrap gap-1"></div>
               </div>
 
               <div>
-                <h6 class="fw-bold text-secondary mb-1">Characteristics</h6>
+                <h6 class="fw-bold text-secondary mb-1" >Characteristics</h6>
                 <div id="modal-moves" class="moves-scroll-box p-2 border rounded bg-body-tertiary d-flex flex-wrap gap-1"></div>
               </div>
             </div>
