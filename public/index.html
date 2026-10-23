@@ -10,15 +10,15 @@
 <body class="bg-body-tertiary">
 
   <!-- Top Navbar & Search -->
-  <nav class="navbar navbar-expand-lg bg-secondary navbar-dark sticky-top shadow-sm">
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top shadow-sm galaxy-navbar">
     <div class="container">
       <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="#" id="brand-reset">
-        </span> The Galaxy
+        ✦ The Galaxy Far, Far Away
       </a>
-      <form class="d-flex" id="search-form" role="search">
+      <form class="d-flex" id="search-form" role="search" action="/api/character">
         <div class="input-group">
-          <input class="form-control" name="search" type="search" id="search-input" placeholder="Search by name or ID..." aria-label="Search">
-          <button class="btn btn-dark" type="submit">Search</button>
+          <input class="form-control" name="search" type="search" id="search-input" placeholder="Search by exact name" aria-label="Search">
+          <button class="btn btn-gold" type="submit">Search</button>
           <button class="btn btn-outline-light d-none" type="button" id="clear-search-btn">Reset</button>
         </div>
       </form>
@@ -59,8 +59,8 @@
   <!-- Detail Modal with Left/Right Navigation -->
   <div class="modal fade" id="characters-modal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content border-0 shadow-lg">
-        <div class="modal-header bg-info text-white">
+      <div class="modal-content galaxy-modal shadow-lg">
+        <div class="modal-header galaxy-modal-header">
           <h5 class="modal-title fw-bold text-capitalize" id="modal-name">Character Name</h5>
           <span class="badge bg-dark ms-2 fs-6" id="modal-id">#000</span>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -79,40 +79,40 @@
             <!-- Right Column: Stats, Abilities, Moves, Characteristics, etc. -->
             <div class="col-md-7">
               <div class="row g-2 text-center mb-3">
-                <div class="col-4">
-                  <div class="p-2 border rounded bg-body-tertiary">
-                    <small class="text-secondary d-block">Age</small>
+                <div class="col-4" >
+                  <div class="p-2 border rounded bg-body-tertiary" id="gender">
+                    <small class="text-secondary d-block" id="gender-text">Gender</small>
                     <span class="fw-bold" id="modal-exp">-</span>
                   </div>
                 </div>
                 <div class="col-4">
-                  <div class="p-2 border rounded bg-body-tertiary">
-                    <small class="text-secondary d-block">Height</small>
+                  <div class="p-2 border rounded bg-body-tertiary" id="height">
+                    <small class="text-secondary d-block" id="height-text">Height</small>
                     <span class="fw-bold" id="modal-height">-</span>
                   </div>
                 </div>
                 <div class="col-4">
-                  <div class="p-2 border rounded bg-body-tertiary">
-                    <small class="text-secondary d-block">Weight</small>
+                  <div class="p-2 border rounded bg-body-tertiary" id="weight">
+                    <small class="text-secondary d-block" id="weight-text">Weight</small>
                     <span class="fw-bold" id="modal-weight">-</span>
                   </div>
                 </div>
               </div>
               <!-- Add the details requested in your exercise. -->
               <div class="mb-3">
-                <h6 class="fw-bold text-secondary mb-1">Features</h6>
+                <!-- <h6 class="fw-bold text-secondary mb-1">Features</h6> -->
                 <div id="modal-abilities" class="d-flex flex-wrap gap-1"></div>
               </div>
 
               <div>
-                <h6 class="fw-bold text-secondary mb-1">Characteristics</h6>
+                <h6 class="fw-bold text-secondary mb-1" >Characteristics</h6>
                 <div id="modal-moves" class="moves-scroll-box p-2 border rounded bg-body-tertiary d-flex flex-wrap gap-1"></div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="modal-footer d-flex justify-content-between bg-body-tertiary">
+        <div class="modal-footer d-flex justify-content-between">
           <button type="button" class="btn btn-outline-light px-4" id="prev-btn">
             &larr; Previous
           </button>
