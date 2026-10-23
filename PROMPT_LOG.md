@@ -55,3 +55,15 @@
 **Integration & Learnings**: The styles override Bootstrap colors without changing its components.
 
 ---
+
+**Goal:** Make the default image according to the theme of the page
+
+**Prompt**: "Create a starwars blade as default image, in the same way as the actual default image has been created. With an offline svg."
+
+**Tool** : Chatgpt GPT-6
+
+**The Human Audit & Modifications**: There weren't issues
+
+**Integration & Learnings**: New default image for the page.
+
+---
