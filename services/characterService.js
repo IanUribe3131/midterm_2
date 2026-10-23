@@ -32,7 +32,7 @@ export async function getAllCharacters() {
 export async function getCharacterById(id) {
     const characters = await getAllCharacters();
 
-    return characters.find(character => character.id === Number(id)) || null;
+    return characters.find(character => character.id === parseInt(id)) || null;
 }
 
 export async function searchCharacterByName(name) {
