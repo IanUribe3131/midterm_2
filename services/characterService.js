@@ -24,7 +24,15 @@ export async function getAllCharacters() {
         throw new Error('Invalid character data received from the API');
     }
 
+    
+    const validImage=async(character)=>{
+        const x= await fetch(character.image);
+        if(x.status===404) character.image=undefined;
+        
+    }
+    await Promise.allSettled(characters.map(validImage));
     charactersCache = characters;
+
 
     return charactersCache
 } 

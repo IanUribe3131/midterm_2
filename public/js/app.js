@@ -1,11 +1,45 @@
 // Offline SVG Fallback for missing/broken sprites
 const DEFAULT_IMAGE = "data:image/svg+xml;utf8," + encodeURIComponent(`
   <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
-    <rect width="100%" height="100%" fill="#2b3035"/>
-    <circle cx="100" cy="100" r="60" fill="none" stroke="#6c757d" stroke-width="8"/>
-    <line x1="40" y1="100" x2="160" y2="100" stroke="#6c757d" stroke-width="8"/>
-    <circle cx="100" cy="100" r="18" fill="#2b3035" stroke="#6c757d" stroke-width="8"/>
-    <text x="50%" y="185" font-family="sans-serif" font-size="14" fill="#adb5bd" text-anchor="middle">No Image</text>
+    <defs>
+      <radialGradient id="bg" cx="50%" cy="50%" r="70%">
+        <stop offset="0" stop-color="#243449"/>
+        <stop offset="1" stop-color="#131b27"/>
+      </radialGradient>
+      <linearGradient id="blade" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#e0f2fe"/>
+        <stop offset="0.5" stop-color="#7dd3fc"/>
+        <stop offset="1" stop-color="#0ea5e9"/>
+      </linearGradient>
+      <linearGradient id="hilt" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#e2e8f0"/>
+        <stop offset="0.5" stop-color="#94a3b8"/>
+        <stop offset="1" stop-color="#475569"/>
+      </linearGradient>
+    </defs>
+
+    <rect width="200" height="200" fill="url(#bg)"/>
+    <ellipse cx="90" cy="100" rx="72" ry="48" fill="#0ea5e9" opacity="0.10"/>
+
+    <!-- Glow -->
+    <rect x="14" y="84" width="118" height="32" rx="16" fill="#38bdf8" opacity="0.16"/>
+    <rect x="18" y="89" width="112" height="22" rx="11" fill="#38bdf8" opacity="0.30"/>
+
+    <!-- Blade -->
+    <rect x="24" y="96" width="104" height="8" rx="4" fill="url(#blade)"/>
+    <rect x="28" y="98" width="96" height="4" rx="2" fill="#f0f9ff" opacity="0.9"/>
+
+    <!-- Hilt -->
+    <rect x="124" y="85" width="6" height="30" rx="3" fill="#cbd5e1"/>
+    <rect x="130" y="89" width="10" height="22" rx="2" fill="url(#hilt)"/>
+    <rect x="140" y="92" width="30" height="16" rx="2" fill="#64748b"/>
+    <rect x="143" y="94" width="2.5" height="12" rx="1.25" fill="#334155"/>
+    <rect x="148" y="94" width="2.5" height="12" rx="1.25" fill="#334155"/>
+    <rect x="153" y="94" width="2.5" height="12" rx="1.25" fill="#334155"/>
+    <rect x="158" y="94" width="2.5" height="12" rx="1.25" fill="#334155"/>
+    <rect x="163" y="94" width="2.5" height="12" rx="1.25" fill="#334155"/>
+    <rect x="170" y="90" width="9" height="20" rx="3" fill="#cbd5e1"/>
+    <rect x="132" y="94" width="6" height="4" rx="1" fill="#ef4444"/>
   </svg>
 `);
 
