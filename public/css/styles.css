@@ -1,13 +1,39 @@
 /* Scrollable Catalog Container */
+html, body{
+  background-color: black !important;
+}
+
+.black-bg{
+  
+  background-color: black !important;
+}
+.white-letters{
+  color:white !important;
+}
+
+.golden-letters{
+  
+  color:#dcbd35 !important;
+}
+
 .catalog-scroll-container {
   max-height: 72vh;
   overflow-y: auto;
+  background-color:black !important;
+  border-color:black !important;
+  scrollbar-color: #dcbd35 #1a1a1a; /* thumb | track */
 }
+
 
 /* Card Interactivity */
 .char-card {
   cursor: pointer;
   transition: transform 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  padding: 0px !important;
+  background-color:#1a1a1a !important;
+}
+.char-card h6{
+  color:#dcbd35 !important;
 }
 
 .char-card:hover {
@@ -16,7 +42,9 @@
 }
 
 .char-card-img {
-  height: 110px;
+  /* height: 110px; */
+  width:100%;
+  aspect-ratio: 1/1;
   object-fit: contain;
 }
 

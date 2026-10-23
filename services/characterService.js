@@ -25,7 +25,17 @@ export async function getAllCharacters() {
     }
 
     charactersCache = characters;
+    const validImages=async (character)=>{
+        const x=await fetch(character.image);
+        if(x.status===404){
+            character.image=null;
+        }
+    };
+    
+    await charactersCache.forEach(await validImages);
+        
 
+    
     return charactersCache
 } 
 

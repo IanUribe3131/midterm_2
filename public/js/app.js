@@ -88,9 +88,12 @@ function renderCatalog(characterList, searchQuery) {
   catalogSection.classList.remove('d-none');
   catalogGrid.innerHTML = '';
   catalogCount.textContent = `${characterList.length} entries`;
+  catalogCount.classList.add('white-letters')
   catalogSubtitle.textContent = searchQuery ? `Search Results for "${searchQuery}"` : 'All Characters';
+  catalogSubtitle.classList.add('white-letters')
+  catalogSection.classList.add('black-bg');
 
-  characterList.forEach(async (character) => {
+  characterList.forEach( (character) => {
     const col = document.createElement('div');
     col.className = 'col';
 
@@ -101,8 +104,8 @@ function renderCatalog(characterList, searchQuery) {
     const img = document.createElement('img');
     img.className = 'card-img-top char-card-img mx-auto my-2';
     img.alt = character.name;
-    const x=await fetch(character.image);
-    if (x.status===404) character.image=undefined;
+    // const x=await fetch(character.image);
+    // if (x.status===404) character.image=undefined;
     img.src = character.image || DEFAULT_IMAGE;
     img.onerror = () => { img.onerror = null; img.src = DEFAULT_IMAGE; };
 
