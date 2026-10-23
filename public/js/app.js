@@ -90,7 +90,7 @@ function renderCatalog(characterList, searchQuery) {
   catalogCount.textContent = `${characterList.length} entries`;
   catalogSubtitle.textContent = searchQuery ? `Search Results for "${searchQuery}"` : 'All Characters';
 
-  characterList.forEach((character) => {
+  characterList.forEach(async (character) => {
     const col = document.createElement('div');
     col.className = 'col';
 
@@ -101,6 +101,8 @@ function renderCatalog(characterList, searchQuery) {
     const img = document.createElement('img');
     img.className = 'card-img-top char-card-img mx-auto my-2';
     img.alt = character.name;
+    const x=await fetch(character.image);
+    if (x.status===404) character.image=undefined;
     img.src = character.image || DEFAULT_IMAGE;
     img.onerror = () => { img.onerror = null; img.src = DEFAULT_IMAGE; };
 
